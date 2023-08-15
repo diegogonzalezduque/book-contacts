@@ -1,0 +1,41 @@
+<h1>Versions of Contact: <%= @contact.email %></h1>
+
+<table class='table table-striped'>
+  <tr>
+    <th>Version</th>
+    <th>Event</th>
+    <th>Modified by</th>
+    <th>Created At</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th></th>
+  </tr>
+  <% @versions.each do |version| %>
+    <tr>
+      <td><%= version[:id] %></td>
+      <td><%= version[:event] %></td>
+      <td><%= version[:whodunnit] %></td>
+      <td><%= version[:created_at] %></td>
+      <td><%= version[:reified]&.first_name %></td>
+      <td><%= version[:reified]&.last_name %></td>
+      <td><%= version[:reified]&.email %></td>
+      <td><%= version[:reified]&.phone_number %></td>
+      
+      <td>
+        <form action="<%= revert_version_contact_path(id: version[:id]) %>" method="post">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <%= hidden_field_tag :_method, :post %>
+          <button type="submit">Revert</button>
+        </form>
+      </td>
+
+    </tr>
+  <% end %>
+</table>
+
+
+<%= link_to contacts_path, class: 'btn btn-outline-primary mr-2' do %>
+  Back to Contacts
+<% end %>

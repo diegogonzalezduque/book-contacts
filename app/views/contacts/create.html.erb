@@ -1,0 +1,11 @@
+<h1>Contact Created</h1>
+
+<p>Successfully created the contact:</p>
+<ul>
+  <li><strong>First Name:</strong> <%= @contact.first_name %></li>
+  <li><strong>Last Name:</strong> <%= @contact.last_name %></li>
+  <li><strong>Email:</strong> <%= @contact.email %></li>
+  <li><strong>Phone Number:</strong> <%= @contact.phone_number %></li>
+</ul>
+
+<%= link_to 'Back to Contacts', contacts_path %>

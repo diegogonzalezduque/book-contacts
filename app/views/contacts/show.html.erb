@@ -1,0 +1,17 @@
+<h1>Contact Details</h1>
+
+<ul>
+  <li><strong>First Name:</strong> <%= @contact.first_name %></li>
+  <li><strong>Last Name:</strong> <%= @contact.last_name %></li>
+  <li><strong>Email:</strong> <%= @contact.email %></li>
+  <li><strong>Phone Number:</strong> <%= @contact.phone_number %></li>
+</ul>
+
+
+<%= link_to versions_contact_path(@contact), class: 'btn btn-outline-primary mr-2' do %>
+    Show Versions
+<% end %>
+
+<%= link_to contacts_path, class: 'btn btn-outline-primary mr-2' do %>
+    Back to Contacts
+<% end %>
