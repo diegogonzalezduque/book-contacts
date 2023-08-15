@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :contacts do
+    member do
+      get 'versions', to: 'contacts#versions'
+      post 'revert_version/:id', to: 'contacts#revert', as: 'revert_version'
+    end
+  end
+
+  #devise_for :users
+
+  root to: 'contacts#index'
 end
